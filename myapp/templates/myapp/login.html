@@ -1,1 +1,29 @@
-LI
+{% extends "myapp/base.html"%}
+{% load static %}
+{% block extra_style %}
+<link rel="stylesheet" href="{% static 'myapp/css/login.css' %}">
+{% endblock %}
+{% block header %}
+<div class="header">ログイン</div>
+{% endblock %}
+{% block content %}
+{% if form.errors  %}
+<p>ユーザーID, パスワードが一致しません．</p>
+{% endif %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <!--{{ form.as_p}}}-->
+
+    <div class=form>ユーザー名:{{ form.username }}</div>
+    <div class=form>パスワード:{{ form.password }}</div>
+    <!-- {{ form.username }}
+    {{ form.username.errors }}
+    <label>パスワード</label>
+    {{ form.password }}
+    {{ form.password.errors }} -->
+    <button type = "submit">ログイン</button>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% endblock %}
+{% block footer %}{% endblock %}
+{% block extra_js %}{% endblock %}

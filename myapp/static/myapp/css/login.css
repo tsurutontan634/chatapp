@@ -1,0 +1,31 @@
+.header{
+    font-size: 24px;
+    text-align: center;
+    margin-top:5% ;
+}
+
+
+button{
+    text-align: center;
+    display: block;
+    font-size: large;
+    background-color: white;
+    width: 120px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-top:5px ;
+    padding-bottom: 5px;
+}
+
+
+form{
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding:10px 0;
+}
+
+.form{
+    margin: 3%;
+}

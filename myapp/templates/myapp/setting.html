@@ -1,1 +1,37 @@
-S
+{% extends "myapp/base.html"%}
+{% load static %}
+{% block extra_style %}
+<link rel="stylesheet" href="{% static 'myapp/css/setting.css' %}">
+{% endblock %}
+{% block header %}<div class=header>設定</div>{% endblock %}
+{% block content %}
+
+<div class="buttons">
+    <div><a href=username_change/ class="button">ユーザー名変更</a></div>
+    <div><a href=email_change/ class="button">メールアドレス変更</a></div>
+    <div><a href=image_change/ class="button">アイコン変更</a></div>
+    <div><a href=password_change/ class="button">パスワード変更</a></div>
+    <div><a href='/logout'class="button">ログアウト</a></div>
+</div>
+
+
+{% endblock %}
+{% block footer %}
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-container__item">
+            <a href="{% url 'friends' %}" class="footer-item__link">
+                <span class="footer-item__icon"><img src="{% static 'myapp/img/people-24px.svg' %}"></span>
+                <span class="footer-item__text">友達</span>
+            </a>
+        </div>
+        <div class="footer-container__item">
+            <a href="{% url 'setting' %}" class="footer-item__link">
+                <span class="footer-item__icon"><img src="{% static 'myapp/img/settings-black-18dp.svg' %}"></span>
+                <span class="footer-item__text">設定</span>
+            </a>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+{% block extra_js %}{% endblock %}
