@@ -10,18 +10,17 @@
 {% block content %}
 
 <div class="body">
-        {% for obj in object_list %}
-        <a href= "{% url 'talk_room' obj.id %}" class="container"> 
-            {%if obj.image%}<img src="{{obj.image.url}}" class="boxA">{%endif%}
-            <span class="boxB">{{obj.username}}</span>
-            {% for i in talk%}
-                {%if i.message_from == user and i.message_to == obj or i.message_from == obj and i.message_to == user %}
-                <span class="boxC">{{i.talk}}</span>
-                <span class="boxD">{{i.time|date:"m/d H:i"}}</span>
-                {%endif%}{% endfor%}
-            
-        </a>
-        {%empty%}
+        {% for i in talk %}
+            {% for obj in object_list %}
+                {%if i.0 == user and i.1 == obj or i.0 == obj and i.1 == user %}
+                    <a href= "{% url 'talk_room' obj.id %}" class="container"> 
+                    {%if obj.image%}<img src="{{obj.image.url}}" class="boxA">{%endif%}
+                    <span class="boxB">{{obj.username}}</span>
+                    <span class="boxC">{{i.2}}</span>
+                    <span class="boxD">{{i.3|date:"m/d H:i"}}</span>
+                    </a>
+                {%endif%}
+            {% endfor%}
         {% endfor %}
 </div>
 

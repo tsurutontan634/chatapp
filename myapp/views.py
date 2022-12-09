@@ -71,7 +71,8 @@ def friends(request):
     ctx = {}
     qs = CustomUser.objects.exclude(id=user.id)
     ctx["object_list"] = qs
-    friends_list = []
+    friends_list_1 = []
+    friends_list_2 = []
 
 
     for friend in qs:
@@ -79,7 +80,15 @@ def friends(request):
         Q(message_from=user,message_to=friend ) |
         Q(message_from=friend, message_to=user)
         ).all().order_by("time").last()
-        friends_list.append(talk)
+        if talk :
+            friends_list_1.append([user,friend,talk.talk,talk.time])
+        else :
+            friends_list_2.append([user,friend,"",None])
+        #friends_list.append(talk)
+
+    friends_list_1.sort(key = lambda x:x[3],reverse=True)
+    friends_list = friends_list_1 + friends_list_2
+
     ctx["talk"] = friends_list
 
     return render(request, template_name, ctx)
