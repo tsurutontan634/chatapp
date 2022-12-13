@@ -16,7 +16,7 @@
                     <a href= "{% url 'talk_room' obj.id %}" class="container"> 
                     {%if obj.image%}<img src="{{obj.image.url}}" class="boxA">{%endif%}
                     <span class="boxB">{{obj.username}}</span>
-                    <span class="boxC">{{i.2}}</span>
+                    <span class="boxC">{{i.2|truncatechars:25}}</span>
                     <span class="boxD">{{i.3|date:"m/d H:i"}}</span>
                     </a>
                 {%endif%}
