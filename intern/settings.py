@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import os # 追加
+import environ 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -130,3 +132,11 @@ MEDIA_ROOT = BASE_DIR / 'media_local'
 AUTH_USER_MODEL = "myapp.CustomUser"
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL='friends'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+if os.path.isfile('.env'): # .envファイルが存在しない時にもエラーが発生しないようにする
+    env = environ.Env(DEBUG=(bool, False),)
+    environ.Env.read_env('.env')
+
+    DEBUG = env('DEBUG')
+    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
