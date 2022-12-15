@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-ozyl(r!*=wht$a7^pp+wp=zg5g96yg5wz!7fwe$gq63874z9##
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -134,9 +134,11 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL='friends'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+ALLOWED_HOSTS = ["13.112.109.239"]
+
 if os.path.isfile('.env'): # .envファイルが存在しない時にもエラーが発生しないようにする
     env = environ.Env(DEBUG=(bool, False),)
     environ.Env.read_env('.env')
 
     DEBUG = env('DEBUG')
-    ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+    #ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
