@@ -13,7 +13,7 @@
     width: 100%;
     height: 64px;
     display: grid;
-    grid-template-rows: 30px 30px;
+    grid-template-rows: 30px auto;
     grid-template-columns: 1fr 3fr 1fr;
     text-decoration: none;
     border-bottom: solid 1px #9b9b9b;
